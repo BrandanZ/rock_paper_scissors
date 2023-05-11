@@ -47,6 +47,6 @@ function getComputerChoice() {
     }
 }
 
-const playerSelection = "rock";
+const playerSelection = prompt("Please choose rock, paper, or scissors?").toLowerCase();
 const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
