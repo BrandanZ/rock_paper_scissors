@@ -53,7 +53,7 @@ function getComputerChoice() {
     }
 }
 
-function game() {
+function playGame() {
     for (let round = 0; round < 5; round++) {
         const playerSelection = prompt("Please choose rock, paper, or scissors?").toLowerCase();
         const computerSelection = getComputerChoice();
@@ -73,4 +73,4 @@ function game() {
 let computerWins = 0;
 let playerWins = 0;
 
-game();
+playGame();
