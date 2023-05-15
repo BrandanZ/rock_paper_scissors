@@ -84,7 +84,7 @@ function checkWinner() {
     return false;
 }
 
-const buttonContainer = document.getElementById('buttonContainer');
+const buttonContainer = document.querySelector('#buttonContainer');
 buttonContainer.addEventListener('click', function(e) {
     let playerSelection = e.target.className.toLowerCase();
     const computerSelection = getComputerChoice();
