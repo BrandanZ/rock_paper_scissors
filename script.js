@@ -1,20 +1,25 @@
-let resultsDiv = document.querySelector('.results');
-let scoreDiv = document.querySelector('.score');
-let winnerDiv = document.querySelector('.winner');
+let computerWins = 0;
+let playerWins = 0;
 
-function updateScore() {
-    scoreDiv.textContent = `Player: ${playerWins}, Computer: ${computerWins}`;
-}
+const resultsDiv = document.querySelector('.results');
+const playerScoreDiv = document.querySelector('.playerScore');
+const computerScoreDiv = document.querySelector('.computerScore');
+const winnerDiv = document.querySelector('.winner');
 
-function checkWinner() {
-    if (playerWins === 5) {
-        winnerDiv.textContent = "You beat the computer! 😀";
-        return true;
-    } else if (computerWins === 5) {
-        winnerDiv.textContent = "You lost to the computer 😢";
-        return true;
+function getComputerChoice() {
+
+    let number = Math.floor(Math.random() * 3);
+
+    switch(number) {
+        case 0:
+            return "rock";
+        
+        case 1:
+            return "paper";
+        
+        case 2:
+            return "scissors";
     }
-    return false;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -63,20 +68,20 @@ function playRound(playerSelection, computerSelection) {
     checkWinner();
 }
 
-function getComputerChoice() {
+function updateScore() {
+    playerScoreDiv.textContent = `Player: ${playerWins}`;
+    computerScoreDiv.textContent = `Computer: ${computerWins}`
+}
 
-    let number = Math.floor(Math.random() * 3);
-
-    switch(number) {
-        case 0:
-            return "rock";
-        
-        case 1:
-            return "paper";
-        
-        case 2:
-            return "scissors";
+function checkWinner() {
+    if (playerWins === 5) {
+        winnerDiv.textContent = "You beat the computer! 😀";
+        return true;
+    } else if (computerWins === 5) {
+        winnerDiv.textContent = "You lost to the computer 😢";
+        return true;
     }
+    return false;
 }
 
 let buttonContainer = document.getElementById('buttonContainer');
@@ -85,11 +90,6 @@ buttonContainer.addEventListener('click', function(e) {
     if (targetButton.tagName.toLowerCase() === 'button') {
         let playerSelection = targetButton.className.toLowerCase();
         const computerSelection = getComputerChoice();
-        console.log(computerSelection);
-        console.log(playerSelection);
         playRound(playerSelection, computerSelection);
     }
 });
-
-let computerWins = 0;
-let playerWins = 0;
