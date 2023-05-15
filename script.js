@@ -84,12 +84,9 @@ function checkWinner() {
     return false;
 }
 
-let buttonContainer = document.getElementById('buttonContainer');
+const buttonContainer = document.getElementById('buttonContainer');
 buttonContainer.addEventListener('click', function(e) {
-    let targetButton = e.target;
-    if (targetButton.tagName.toLowerCase() === 'button') {
-        let playerSelection = targetButton.className.toLowerCase();
-        const computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection);
-    }
+    let playerSelection = e.target.className.toLowerCase();
+    const computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
 });
