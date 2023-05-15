@@ -54,21 +54,23 @@ function getComputerChoice() {
 }
 
 function playGame() {
-    for (let round = 0; round < 5; round++) {
-        const playerSelection = prompt("Please choose rock, paper, or scissors?").toLowerCase();
-        const computerSelection = getComputerChoice();
-        result = playRound(playerSelection, computerSelection);
-        console.log(result);
-    }
+    // for (let round = 0; round < 5; round++) {
+    //    const playerSelection = prompt("Please choose rock, paper, or scissors?").toLowerCase();
+    //     const computerSelection = getComputerChoice();
+    //     result = playRound(playerSelection, computerSelection);
+    //     console.log(result);
+    // }
 
     if (playerWins > computerWins) {
-        console.log(`You win ${playerWins} to ${computerWins}`);
+         console.log(`You win ${playerWins} to ${computerWins}`);
     } else if (playerWins < computerWins) {
-        console.log(`You lose ${computerWins} to ${playerWins}`);
+         console.log(`You lose ${computerWins} to ${playerWins}`);
     } else {
-        console.log(`It's a tie ${computerWins} to ${playerWins}`);
+         console.log(`It's a tie ${computerWins} to ${playerWins}`);
     }
 }
+
+let button = document.querySelector('button');
 
 let computerWins = 0;
 let playerWins = 0;
