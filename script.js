@@ -1,10 +1,29 @@
 let resultsDiv = document.querySelector('.results');
+let scoreDiv = document.querySelector('.score');
+let winnerDiv = document.querySelector('.winner');
+
+function updateScore() {
+    scoreDiv.textContent = `Player: ${playerWins}, Computer: ${computerWins}`;
+}
+
+function checkWinner() {
+    if (playerWins === 5) {
+        winnerDiv.textContent = "You beat the computer! 😀";
+        return true;
+    } else if (computerWins === 5) {
+        winnerDiv.textContent = "You lost to the computer 😢";
+        return true;
+    }
+    return false;
+}
 
 function playRound(playerSelection, computerSelection) {
+    if (checkWinner()) {
+        return;
+    }
     if (playerSelection === computerSelection) {
         resultsDiv.textContent = "It's a tie.";
-    }
-    else {
+    } else {
         switch (playerSelection) {
             case "rock":
                 if (computerSelection === "scissors") {
@@ -15,6 +34,7 @@ function playRound(playerSelection, computerSelection) {
                     computerWins++;
                     resultsDiv.textContent = "You lose! Paper beats rock.";
                 }
+                break;
             
             case "paper":
                 if (computerSelection === "scissors") {
@@ -25,6 +45,7 @@ function playRound(playerSelection, computerSelection) {
                     playerWins++;
                     resultsDiv.textContent = "You win! Paper beats rock."
                 }
+                break;
 
             case "scissors":
                 if (computerSelection === "paper") {
@@ -35,8 +56,11 @@ function playRound(playerSelection, computerSelection) {
                     computerWins++;
                     resultsDiv.textContent = "You lose! Rock beats scissors."
                 }
+                break;
         }
     }
+    updateScore();
+    checkWinner();
 }
 
 function getComputerChoice() {
@@ -55,28 +79,17 @@ function getComputerChoice() {
     }
 }
 
-function playGame() {
-    // if (playerWins > computerWins) {
-    //      console.log(`You win ${playerWins} to ${computerWins}`);
-    // } else if (playerWins < computerWins) {
-    //      console.log(`You lose ${computerWins} to ${playerWins}`);
-    // } else {
-    //      console.log(`It's a tie ${computerWins} to ${playerWins}`);
-    // }
-}
-
 let buttonContainer = document.getElementById('buttonContainer');
 buttonContainer.addEventListener('click', function(e) {
     let targetButton = e.target;
     if (targetButton.tagName.toLowerCase() === 'button') {
         let playerSelection = targetButton.className.toLowerCase();
         const computerSelection = getComputerChoice();
+        console.log(computerSelection);
+        console.log(playerSelection);
         playRound(playerSelection, computerSelection);
     }
 });
 
-
 let computerWins = 0;
 let playerWins = 0;
-
-playGame();
