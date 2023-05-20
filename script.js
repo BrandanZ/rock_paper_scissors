@@ -6,6 +6,8 @@ const playerScoreDiv = document.querySelector('.playerScore');
 const computerScoreDiv = document.querySelector('.computerScore');
 const winnerDiv = document.querySelector('.winner');
 
+resultsDiv.style.fontSize = '20px';
+
 function getComputerChoice() {
 
     let number = Math.floor(Math.random() * 3);
