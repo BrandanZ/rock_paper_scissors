@@ -51,3 +51,26 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+#replayButton {
+    display: inline-block;
+    font-size: 20px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #008CBA;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#replayButton:hover {
+    background-color: #007B9A;
+}
+
+#scoreboard {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+}

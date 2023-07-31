@@ -5,6 +5,7 @@ const resultsDiv = document.querySelector('.results');
 const playerScoreDiv = document.querySelector('.playerScore');
 const computerScoreDiv = document.querySelector('.computerScore');
 const winnerDiv = document.querySelector('.winner');
+const replayButton = document.querySelector('#replayButton');
 
 resultsDiv.style.fontSize = '20px';
 
@@ -78,12 +79,23 @@ function updateScore() {
 function checkWinner() {
     if (playerWins === 5) {
         winnerDiv.textContent = "You beat the computer! 😀";
+        replayButton.style.display = "inline-block";
         return true;
     } else if (computerWins === 5) {
         winnerDiv.textContent = "You lost to the computer 😢";
+        replayButton.style.display = "inline-block";
         return true;
     }
     return false;
+}
+
+function resetGame() {
+    playerWins = 0;
+    computerWins = 0;
+    updateScore();
+    resultsDiv.textContent = '';
+    winnerDiv.textContent = '';
+    replayButton.style.display = "none";
 }
 
 const buttonContainer = document.querySelector('#buttonContainer');
@@ -92,3 +104,5 @@ buttonContainer.addEventListener('click', function(e) {
     const computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
 });
+
+replayButton.addEventListener('click', resetGame);
