@@ -7,8 +7,6 @@ const computerScoreDiv = document.querySelector('.computerScore');
 const winnerDiv = document.querySelector('.winner');
 const replayButton = document.querySelector('#replayButton');
 
-resultsDiv.style.fontSize = '20px';
-
 function getComputerChoice() {
 
     let number = Math.floor(Math.random() * 3);
@@ -42,18 +40,20 @@ function playRound(playerSelection, computerSelection) {
         return;
     }
     let result;
-    switch (playerSelection) {
-        case "rock":
-            result = computerSelection === "scissors";
-            break;
-        case "paper":
-            result = computerSelection === "rock";
-            break;
-        case "scissors":
-            result = computerSelection === "paper";
-            break;
+    if (playerSelection !== computerSelection) {
+        switch (playerSelection) {
+            case "rock":
+                result = computerSelection === "scissors";
+                break;
+            case "paper":
+                result = computerSelection === "rock";
+                break;
+            case "scissors":
+                result = computerSelection === "paper";
+                break;
+        }
+        result ? playerWins++ : computerWins++;
     }
-    result ? playerWins++ : computerWins++;
     resultsDiv.textContent = getResultMessage(playerSelection, computerSelection, result);
     updateScore();
     checkWinner();
