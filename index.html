@@ -9,23 +9,32 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1 class="title">Rock Paper Scissors Game</h1>
+    <header>
+        <h1 class="title">Rock Paper Scissors Game</h1>
+    </header>
 
-    <div class="instructions">Choose Rock, Paper, or Scissors to play against the computer.<br>
-    First to 5 wins!</div>
+    <section>
+        <p class="instructions">Choose Rock, Paper, or Scissors to play against the computer.<br>
+        First to 5 wins!</p>
+    </section>
 
-    <div id="buttonContainer">
-        <button class="Rock">Rock</button>
-        <button class="Paper">Paper</button>
-        <button class="Scissors">Scissors</button>
-    </div>
+    <section id="gameplay">
+        <div id="buttonContainer">
+            <button class="Rock">Rock</button>
+            <button class="Paper">Paper</button>
+            <button class="Scissors">Scissors</button>
+        </div>
 
-    <div class="results"></div>
-    <div id="scoreboard">
-        <div class="playerScore"></div>
-        <div class="computerScore"></div>
-    </div>
-    <div class="winner"></div>
-    <button id="replayButton" style="display: none;">Play again?</button>
+        <div class="results"></div>
+        <div id="scoreboard">
+            <div class="playerScore"></div>
+            <div class="computerScore"></div>
+        </div>
+    </section>
+
+    <section id="endGame">
+        <div class="winner"></div>
+        <button id="replayButton" class="hidden">Play again?</button>
+    </section>
 </body>
 </html>

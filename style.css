@@ -65,6 +65,10 @@ body {
     transition: background-color 0.3s ease;
 }
 
+#replayButton.hidden {
+    display: none;
+}
+
 #replayButton:hover {
     background-color: #007B9A;
 }

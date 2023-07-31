@@ -79,11 +79,11 @@ function updateScore() {
 function checkWinner() {
     if (playerWins === 5) {
         winnerDiv.textContent = "You beat the computer! 😀";
-        replayButton.style.display = "inline-block";
+        document.getElementById('replayButton').classList.remove('hidden');
         return true;
     } else if (computerWins === 5) {
         winnerDiv.textContent = "You lost to the computer 😢";
-        replayButton.style.display = "inline-block";
+        document.getElementById('replayButton').classList.remove('hidden');
         return true;
     }
     return false;
@@ -95,7 +95,7 @@ function resetGame() {
     updateScore();
     resultsDiv.textContent = '';
     winnerDiv.textContent = '';
-    replayButton.style.display = "none";
+    document.getElementById('replayButton').classList.add('hidden');
 }
 
 const buttonContainer = document.querySelector('#buttonContainer');
