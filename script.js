@@ -25,48 +25,36 @@ function getComputerChoice() {
     }
 }
 
+function getResultMessage(playerSelection, computerSelection, result) {
+    const winMessage = `You win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}.`;
+    const loseMessage = `You lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}.`;
+
+    if (playerSelection === computerSelection) {
+        return "It's a tie.";
+    } else {
+        return result ? winMessage : loseMessage;
+    }
+}
+
+
 function playRound(playerSelection, computerSelection) {
     if (checkWinner()) {
         return;
     }
-    if (playerSelection === computerSelection) {
-        resultsDiv.textContent = "It's a tie.";
-    } else {
-        switch (playerSelection) {
-            case "rock":
-                if (computerSelection === "scissors") {
-                    playerWins++;
-                    resultsDiv.textContent = "You win! Rock beats scissors.";
-                }
-                else {
-                    computerWins++;
-                    resultsDiv.textContent = "You lose! Paper beats rock.";
-                }
-                break;
-            
-            case "paper":
-                if (computerSelection === "scissors") {
-                    computerWins++;
-                    resultsDiv.textContent = "You lose! Scissors beats paper."
-                }
-                else {
-                    playerWins++;
-                    resultsDiv.textContent = "You win! Paper beats rock."
-                }
-                break;
-
-            case "scissors":
-                if (computerSelection === "paper") {
-                    playerWins++;
-                    resultsDiv.textContent = "You win! Scissors beats paper."
-                }
-                else {
-                    computerWins++;
-                    resultsDiv.textContent = "You lose! Rock beats scissors."
-                }
-                break;
-        }
+    let result;
+    switch (playerSelection) {
+        case "rock":
+            result = computerSelection === "scissors";
+            break;
+        case "paper":
+            result = computerSelection === "rock";
+            break;
+        case "scissors":
+            result = computerSelection === "paper";
+            break;
     }
+    result ? playerWins++ : computerWins++;
+    resultsDiv.textContent = getResultMessage(playerSelection, computerSelection, result);
     updateScore();
     checkWinner();
 }
@@ -77,12 +65,14 @@ function updateScore() {
 }
 
 function checkWinner() {
+    let winner = null;
     if (playerWins === 5) {
-        winnerDiv.textContent = "You beat the computer! 😀";
-        document.getElementById('replayButton').classList.remove('hidden');
-        return true;
+        winner = "You beat the computer! 😀";
     } else if (computerWins === 5) {
-        winnerDiv.textContent = "You lost to the computer 😢";
+        winner = "You lost to the computer 😢";
+    }
+    if (winner) {
+        winnerDiv.textContent = winner;
         document.getElementById('replayButton').classList.remove('hidden');
         return true;
     }
