@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+#buttonContainer {
+    margin-top: 50px;
+}
+
+#buttonContainer button {
+    font-size: 24px;
+    padding: 15px 30px;
+    margin: 0 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #008CBA;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#buttonContainer button:hover {
+    background-color: #007B9A;
+}
+
+.results {
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+.playerScore,
+.computerScore {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.winner {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f00;
+    margin-top: 50px;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
